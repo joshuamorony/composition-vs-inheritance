@@ -1,0 +1,7 @@
+{
+  "name": "composition-vs-inheritance",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
