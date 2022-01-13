@@ -1,21 +1,16 @@
 import { Injectable } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { debounceTime, filter } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { AbstractListPageService } from '../../../shared/data-access/models/list-page.interface';
+import { ListPageService } from '../../../shared/page-base/list-page/list-page.service';
+import { AbstractListPageService } from '../../../shared/page-base/list-page/list-page.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class EmployeesService implements AbstractListPageService {
-  searchControl: FormControl = new FormControl('');
-  listSearch$ = this.searchControl.valueChanges.pipe(
-    filter((contents): contents is string => typeof contents === 'string'),
-    debounceTime(100)
-  );
+export class EmployeesService
+  extends ListPageService
+  implements AbstractListPageService
+{
   listData$ = this.getAll();
-
-  constructor() {}
 
   getAll() {
     return of(['Arya', 'Tywin', 'Robb', 'Jamie', 'Davos']);
