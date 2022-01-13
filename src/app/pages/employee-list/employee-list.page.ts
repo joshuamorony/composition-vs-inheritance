@@ -1,18 +1,14 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { debounceTime } from 'rxjs/operators';
 import { EmployeesService } from './data-access/employees.service';
+import { ListPage } from '../../shared/feature/list-page/list-page.component';
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.page.html',
   styleUrls: ['./employee-list.page.scss'],
 })
-export class EmployeeListPage {
-  searchControl: FormControl = new FormControl('');
-  listSearch$ = this.searchControl.valueChanges.pipe(debounceTime(100));
-
-  listData$ = this.employeeService.getAll();
-
-  constructor(private employeeService: EmployeesService) {}
+export class EmployeeListPage extends ListPage {
+  constructor(private employeeService: EmployeesService) {
+    super(employeeService);
+  }
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { debounceTime } from 'rxjs/operators';
+import { ListPage } from '../../shared/feature/list-page/list-page.component';
 import { ProductsService } from './data-access/products.service';
 
 @Component({
@@ -8,11 +7,8 @@ import { ProductsService } from './data-access/products.service';
   templateUrl: './product-list.page.html',
   styleUrls: ['./product-list.page.scss'],
 })
-export class ProductListPage {
-  searchControl: FormControl = new FormControl('');
-  listSearch$ = this.searchControl.valueChanges.pipe(debounceTime(100));
-
-  listData$ = this.productService.getAll();
-
-  constructor(private productService: ProductsService) {}
+export class ProductListPage extends ListPage {
+  constructor(private productsService: ProductsService) {
+    super(productsService);
+  }
 }
