@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Product List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-search-bar [control]="searchControl"></app-search-bar>
+
+  <app-data-list
+    *ngIf="{data: listData$ | async, search: listSearch$ | async} as vm;"
+    [data]="vm.data"
+    [search]="vm.search"
+  ></app-data-list>
+</ion-content>
