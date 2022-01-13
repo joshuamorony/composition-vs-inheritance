@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, filter } from 'rxjs/operators';
 import { AbstractListPageService } from '../data-access/models/list-page.interface';
 
 @Component({
@@ -9,7 +9,10 @@ import { AbstractListPageService } from '../data-access/models/list-page.interfa
 })
 export class BaseListPage {
   searchControl: FormControl = new FormControl('');
-  listSearch$ = this.searchControl.valueChanges.pipe(debounceTime(100));
+  listSearch$ = this.searchControl.valueChanges.pipe(
+    filter((contents): contents is string => typeof contents === 'string'),
+    debounceTime(100)
+  );
 
   listData$ = this.pageService.getAll();
 
