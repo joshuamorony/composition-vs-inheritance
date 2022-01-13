@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, filter } from 'rxjs/operators';
 import { EmployeesService } from './data-access/employees.service';
 
 @Component({
@@ -10,7 +10,10 @@ import { EmployeesService } from './data-access/employees.service';
 })
 export class EmployeeListPage {
   searchControl: FormControl = new FormControl('');
-  listSearch$ = this.searchControl.valueChanges.pipe(debounceTime(100));
+  listSearch$ = this.searchControl.valueChanges.pipe(
+    filter((contents): contents is string => typeof contents === 'string'),
+    debounceTime(100)
+  );
 
   listData$ = this.employeeService.getAll();
 

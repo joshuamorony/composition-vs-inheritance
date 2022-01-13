@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, filter } from 'rxjs/operators';
 import { ProductsService } from './data-access/products.service';
 
 @Component({
@@ -10,7 +10,10 @@ import { ProductsService } from './data-access/products.service';
 })
 export class ProductListPage {
   searchControl: FormControl = new FormControl('');
-  listSearch$ = this.searchControl.valueChanges.pipe(debounceTime(100));
+  listSearch$ = this.searchControl.valueChanges.pipe(
+    filter((contents): contents is string => typeof contents === 'string'),
+    debounceTime(100)
+  );
 
   listData$ = this.productService.getAll();
 
