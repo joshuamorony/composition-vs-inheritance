@@ -4,9 +4,7 @@ import { debounceTime, filter } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { AbstractListPageService } from '../../../shared/data-access/models/list-page.interface';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class EmployeesService implements AbstractListPageService {
   searchControl: FormControl = new FormControl('');
   listSearch$ = this.searchControl.valueChanges.pipe(
