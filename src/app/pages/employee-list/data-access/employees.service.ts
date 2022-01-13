@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
-import { ListPageService } from 'src/app/shared/data-access/models/list-page.service';
+import { AbstractListPageService } from '../../../shared/data-access/models/list-page.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class EmployeesService implements ListPageService {
+export class EmployeesService implements AbstractListPageService {
   constructor() {}
 
   getAll() {

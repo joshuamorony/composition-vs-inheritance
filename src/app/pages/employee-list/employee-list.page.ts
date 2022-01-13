@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
-import { ListPageService } from 'src/app/shared/data-access/models/list-page.service';
+import { AbstractListPageService } from '../../shared/data-access/models/list-page.interface';
 import { EmployeesService } from './data-access/employees.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { EmployeesService } from './data-access/employees.service';
   styleUrls: ['./employee-list.page.scss'],
   providers: [
     {
-      provide: ListPageService,
+      provide: AbstractListPageService,
       useClass: EmployeesService,
     },
   ],
@@ -20,5 +20,5 @@ export class EmployeeListPage {
   listSearch$ = this.searchControl.valueChanges.pipe(debounceTime(100));
   listData$ = this.pageService.getAll();
 
-  constructor(public pageService: ListPageService) {}
+  constructor(public pageService: AbstractListPageService) {}
 }
