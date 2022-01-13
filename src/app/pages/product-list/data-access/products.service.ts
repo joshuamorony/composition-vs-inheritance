@@ -3,9 +3,7 @@ import { of } from 'rxjs';
 import { ListPageService } from '../../../shared/page-base/list-page/list-page.service';
 import { AbstractListPageService } from '../../../shared/page-base/list-page/list-page.interface';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ProductsService
   extends ListPageService
   implements AbstractListPageService
