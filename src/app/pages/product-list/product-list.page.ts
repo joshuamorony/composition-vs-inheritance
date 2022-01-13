@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ListPage } from '../../shared/feature/list-page/list-page.component';
+import { BaseListPage } from '../../base-list-page/feature/list-page.component';
 import { ProductsService } from './data-access/products.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { ProductsService } from './data-access/products.service';
   templateUrl: './product-list.page.html',
   styleUrls: ['./product-list.page.scss'],
 })
-export class ProductListPage extends ListPage {
+export class ProductListPage extends BaseListPage {
   constructor(private productsService: ProductsService) {
     super(productsService);
   }
