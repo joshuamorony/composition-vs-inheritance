@@ -1,5 +1,8 @@
+import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 export abstract class AbstractListPageService {
-  abstract getAll(): Observable<string[]>;
+  abstract searchControl: FormControl;
+  abstract listSearch$: Observable<string>;
+  abstract listData$: Observable<string[]>;
 }

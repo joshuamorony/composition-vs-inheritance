@@ -5,10 +5,10 @@
 </ion-header>
 
 <ion-content>
-  <app-search-bar [control]="searchControl"></app-search-bar>
+  <app-search-bar [control]="listPage.searchControl"></app-search-bar>
 
   <app-data-list
-    *ngIf="{data: listData$ | async, search: listSearch$ | async} as vm;"
+    *ngIf="{data: listPage.listData$| async, search: listPage.listSearch$ | async} as vm;"
     [data]="vm.data"
     [search]="vm.search"
   ></app-data-list>

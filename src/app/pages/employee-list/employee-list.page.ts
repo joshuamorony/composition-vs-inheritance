@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { debounceTime } from 'rxjs/operators';
 import { AbstractListPageService } from '../../shared/data-access/models/list-page.interface';
 import { EmployeesService } from './data-access/employees.service';
 
@@ -16,9 +14,5 @@ import { EmployeesService } from './data-access/employees.service';
   ],
 })
 export class EmployeeListPage {
-  searchControl: FormControl = new FormControl('');
-  listSearch$ = this.searchControl.valueChanges.pipe(debounceTime(100));
-  listData$ = this.pageService.getAll();
-
-  constructor(public pageService: AbstractListPageService) {}
+  constructor(public listPage: AbstractListPageService) {}
 }
