@@ -1,13 +1,9 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
-import { ListPageService } from '../../../shared/page-base/list-page/list-page.service';
-import { AbstractListPageService } from '../../../shared/page-base/list-page/list-page.interface';
+import { AbstractListPageService } from '../../../shared/page-base/list-page/list-page.service';
 
 @Injectable()
-export class EmployeesService
-  extends ListPageService
-  implements AbstractListPageService
-{
+export class EmployeesService extends AbstractListPageService {
   listData$ = this.getAll();
 
   getAll() {

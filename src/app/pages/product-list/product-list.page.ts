@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AbstractListPageService } from '../../shared/page-base/list-page/list-page.interface';
+import { AbstractListPageService } from '../../shared/page-base/list-page/list-page.service';
 import { ProductsService } from './data-access/products.service';
 
 @Component({
